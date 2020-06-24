@@ -1,0 +1,21 @@
+{
+  "name": "v-schema-form-types",
+  "version": "1.0.10",
+  "main": "index.d.ts",
+  "author": {
+    "name": "wuhao"
+  },
+  "dependencies": {
+    "@types/vue": "^2.0.0"
+  },
+  "description": "",
+  "devDependencies": {
+    "async-validator": "^3.1.0",
+    "rxjs": "^6.5.3"
+  },
+  "files": [
+    "index.d.ts",
+    "types"
+  ],
+  "private": false
+}
