@@ -41,14 +41,14 @@ export interface EffectsHandlers {
   onFieldCreateOrChange: (cb: (value: any, path?: string) => any) => EffectsHandlers;
   onFieldFocus: (cb: (path?: string) => any) => EffectsHandlers;
   paths: () => string[];
-  setDisplayValue?: (value: any) => EffectsHandlers;
-  setEnum: (options: any) => EffectsHandlers;
-  setTitle: (title: any) => EffectsHandlers;
+  setDisplayValue?: (value: any | ((field: IField) => any)) => EffectsHandlers;
+  setEnum: (options: any | ((field: IField) => any)) => EffectsHandlers;
   setFieldProps: (props: object | ((field: IField) => object)) => EffectsHandlers;
+  setTitle: (title: any | ((field: IField) => any)) => EffectsHandlers;
   show: () => EffectsHandlers;
   subscribe: (event: string, handler: (...args: any) => any) => EffectsHandlers;
   toggle: () => EffectsHandlers;
-  value: (value?: any) => any;
+  value: (value?: any | ((field: IField) => any)) => any;
 
   appendPath(path: string): EffectsHandlers;
 
