@@ -1,6 +1,6 @@
 import {Subject} from 'rxjs';
 import {VNode} from 'vue';
-import {FormFields, Platform, SchemaFormField} from './bean';
+import {FormFields, Platform, SchemaFormField, SchemaFormStore} from './bean';
 import {IFieldOptions, IFieldState, IFormPathMatcher, IRuleDescription, Path} from './uform';
 
 export interface ISubscribers {
@@ -159,6 +159,7 @@ export interface IField<V = any> {
   setGetValue?: (value?: any) => any;
   shownFromParent?: boolean;
   syncContextValue?: () => void;
+  store?: SchemaFormStore;
   title?: string | VNode;
   type?: string;
   updateState?: (fn: (state: IFieldState) => void) => void;

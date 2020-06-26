@@ -1,6 +1,6 @@
 {
   "name": "v-schema-form-types",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "main": "index.d.ts",
   "author": {
     "name": "wuhao"
