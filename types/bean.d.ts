@@ -1,52 +1,64 @@
 import {VNode} from 'vue';
 import {ValidateRules} from './async-validator';
-import {IField} from './form';
+import {Effects, EffectsContext, IField} from './form';
 import {Rule} from './uform';
 
 export type Platform = 'desktop' | 'mobile';
 
 export interface SchemaFormField {
-  id?: string;
-  events?: {[key:string]: (...args: any[]) => any};
-  nativeEvents?: {[key:string]: (...args: any[]) => any};
-  editable?: boolean;
-  layoutType?: string | object;
-  layoutProps?: object;
   arrayComponent?: any;
   arrayProps?: object;
-  layout?: any;
   /**
    * 字段值是否数组类型
    */
   array?: boolean;
   /**
-   * 枚举选项
-   */
-  enum?: any[];
-  /**
    * 依赖显示的条件，支持条件选项或函数，当函数返回false时不显示该字段
    */
   depends?: ShowFieldCondition[] | ((value: any) => boolean);
-  /**
-   * 提示信息
-   */
-  tip?: string | VNode;
   /**
    * 描述信息
    */
   description?: string | VNode;
   /**
+   * 当表单模式为详情模式时显示的内容
+   */
+  displayValue?: any | VNode | ((value: any) => any);
+  /**
+   * 默认值
+   */
+  default?: any;
+  editable?: boolean;
+  /**
+   * 枚举选项
+   */
+  enum?: any[];
+  events?: {[key:string]: (...args: any[]) => any};
+  /**
    * 当字段类型为object时，子表单的字段列表
    */
   fields?: FormFields;
+  id?: string;
+  layoutType?: string | object;
+  layoutProps?: object;
+  layout?: any;
+  /**
+   * 数值输入组件的最小值
+   */
+  min?: number;
+  /**
+   * 数值输入组件的最大值
+   */
+  max?: number;
+  nativeEvents?: {[key:string]: (...args: any[]) => any};
+  /**
+   * 提示信息
+   */
+  tip?: string | VNode;
   /**
    * 表单属性名称
    */
   property?: string;
-  /**
-   * 当表单模式为详情模式时显示的内容
-   */
-  displayValue?: any | VNode | ((value: any) => any);
   /**
    * 表单项校验规则（async-validator）
    */
@@ -56,33 +68,22 @@ export interface SchemaFormField {
    */
   required?: boolean;
   /**
-   * 数值输入组件的最小值
-   */
-  min?: number;
-  /**
-   * 数值输入组件的最大值
-   */
-  max?: number;
-  /**
    * 输入内容为空时的占位文字
    */
   placeholder?: string;
-  /**
-   * 栅格布局下的栅格数
-   */
-  span?: number;
   /**
    * 表单输入组件的自定义属性
    */
   props?: SchemaFormFieldProps;
   /**
-   * 表单项的属性
+   * 栅格布局下的栅格数
    */
-  wrapperProps?: any;
+  span?: number;
   /**
    * 表单项渲染使用插槽，当指定插槽时，字段的类型无效
    */
   slot?: string;
+  store: SchemaFormStore;
   /**
    * 表单项名称
    */
@@ -92,9 +93,9 @@ export interface SchemaFormField {
    */
   type?: string;
   /**
-   * 默认值
+   * 表单项的属性
    */
-  default?: any;
+  wrapperProps?: any;
   /**
    * 指定额外的组件类型
    */
@@ -139,6 +140,20 @@ export interface ShowFieldCondition {
   operator?: string;
   property?: string;
   value?: any;
+}
+
+export interface SchemaFormStore {
+  fields: { [key: string]: IField };
+  effects?: Effects;
+  props?: FormProps;
+  disabled?: boolean;
+  platform?: Platform;
+  readonly?: boolean;
+  loading?: boolean;
+  inline?: boolean;
+  editable?: boolean;
+  context?: EffectsContext | null;
+  root: any;
 }
 
 export type FormFields = SchemaFormField[] | { [key: string]: SchemaFormField };

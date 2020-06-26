@@ -11,7 +11,8 @@
   "description": "",
   "devDependencies": {
     "async-validator": "^3.1.0",
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.5.5",
+    "vue": "^2.6.11"
   },
   "files": [
     "index.d.ts",
