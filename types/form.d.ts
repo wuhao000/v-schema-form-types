@@ -105,7 +105,7 @@ type Action = BuiltInActions | {
   name: BuiltInActions | string;
   text: string;
   props?: object;
-  action?: () => {}
+  action?: () => any;
 };
 
 export interface IFieldMap {
