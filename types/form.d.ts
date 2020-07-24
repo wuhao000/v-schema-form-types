@@ -36,9 +36,9 @@ export interface EffectsHandlers {
   fields: () => IField[];
   hide: () => EffectsHandlers;
   onFieldBlur: (cb: (path: string) => any) => EffectsHandlers;
-  onFieldChange: (cb: (value: any, path?: string) => any) => EffectsHandlers;
-  onFieldCreate: (cb: (value: any, path?: string) => any) => EffectsHandlers;
-  onFieldCreateOrChange: (cb: (value: any, path?: string) => any) => EffectsHandlers;
+  onFieldChange: (cb: (value: any, path?: string, field?: IField) => any) => EffectsHandlers;
+  onFieldCreate: (cb: (value: any, path?: string, field?: IField) => any) => EffectsHandlers;
+  onFieldCreateOrChange: (cb: (value: any, path?: string, field?: IField) => any) => EffectsHandlers;
   onFieldFocus: (cb: (path?: string) => any) => EffectsHandlers;
   paths: () => string[];
   setDisplayValue?: (value: any | ((field: IField) => any)) => EffectsHandlers;
