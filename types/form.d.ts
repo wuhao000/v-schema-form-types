@@ -30,23 +30,23 @@ export interface IValidateResponse {
   value: any;
 }
 
-export class SchemaForm {
-  public static install: (Vue) => void;
-  public static registerAntd: () => void;
-  public static registerAntdMobile: () => void;
-  public static registerElement: () => void;
-  public static registerComponent: (component: string | object,
+export interface SchemaForm {
+  install: (Vue) => void;
+  registerAntd: () => void;
+  registerAntdMobile: () => void;
+  registerElement: () => void;
+  registerComponent: (component: string | object,
                                     platforms: Platform | Platform[],
                                     types: string | string[],
                                     forArray?: boolean,
                                     getProps?: ((definition: IField, platform: Platform) => object)) => void;
-  public static registerLayout: (options: {
+  registerLayout: (options: {
     component: string | object,
     platforms: Platform | Platform[],
     types: string | string[],
     getProps?: ((definition: IField, platform: Platform) => object)
   }) => void;
-  public static registerDisplayComponent: (component: string | object,
+  registerDisplayComponent: (component: string | object,
                                            platforms: Platform | Platform[],
                                            types: string | string[],
                                            forArray?: boolean,
