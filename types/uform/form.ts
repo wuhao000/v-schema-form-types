@@ -48,30 +48,6 @@ export interface IFormOptions<V = any> {
   values?: V;
 }
 
-export class SchemaForm {
-  public static install: (Vue) => void;
-  public static registerAntd: () => void;
-  public static registerAntdMobile: () => void;
-  public static registerElement: () => void;
-  public static registerComponent: (component: string | object,
-                                     platforms: Platform | Platform[],
-                                     types: string | string[],
-                                     forArray?: boolean,
-                                     getProps?: ((definition: IField, platform: Platform) => object)) => void;
-  public static registerLayout: (options: {
-    component: string | object,
-    platforms: Platform | Platform[],
-    types: string | string[],
-    getProps?: ((definition: IField, platform: Platform) => object)
-  }) => void;
-  public static registerDisplayComponent: (component: string | object,
-                                            platforms: Platform | Platform[],
-                                            types: string | string[],
-                                            forArray?: boolean,
-                                            getProps?: ((definition: IField, platform: Platform) => object),
-                                            layout?: boolean) => void;
-}
-
 // 通过 createActions  创建出来的 actions 接口
 export interface IFormActions {
   dispatch: <T = any>(type: string, payload: T) => void;
