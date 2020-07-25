@@ -35,11 +35,25 @@ export interface SchemaForm {
   registerAntd: () => void;
   registerAntdMobile: () => void;
   registerElement: () => void;
+  register: (options: {
+    component: string | object,
+    platforms: Platform | Platform[],
+    types: string | string[],
+    forArray: boolean,
+    getProps: (definition: IField, platform: Platform) => object,
+    forDisplay: boolean,
+    layout: boolean,
+    wrap: WrapType
+  }) => void;
+  registerResponsiveComponent: (component: string | object,
+                                types: string | string[],
+                                forArray?: boolean,
+                                getProps?: ((definition: IField, platform: Platform) => object)) => void;
   registerComponent: (component: string | object,
-                                    platforms: Platform | Platform[],
-                                    types: string | string[],
-                                    forArray?: boolean,
-                                    getProps?: ((definition: IField, platform: Platform) => object)) => void;
+                      platforms: Platform | Platform[],
+                      types: string | string[],
+                      forArray?: boolean,
+                      getProps?: ((definition: IField, platform: Platform) => object)) => void;
   registerLayout: (options: {
     component: string | object,
     platforms: Platform | Platform[],
@@ -47,11 +61,11 @@ export interface SchemaForm {
     getProps?: ((definition: IField, platform: Platform) => object)
   }) => void;
   registerDisplayComponent: (component: string | object,
-                                           platforms: Platform | Platform[],
-                                           types: string | string[],
-                                           forArray?: boolean,
-                                           getProps?: ((definition: IField, platform: Platform) => object),
-                                           layout?: boolean) => void;
+                             platforms: Platform | Platform[],
+                             types: string | string[],
+                             forArray?: boolean,
+                             getProps?: ((definition: IField, platform: Platform) => object),
+                             layout?: boolean) => void;
 }
 
 export type ValidateHandler = (response: IValidateResponse[]) => void;
@@ -87,6 +101,10 @@ export interface EffectsHandlers {
 
 export type Effects = (context: EffectsContext) => any;
 
+export type WrapType = boolean | {
+  desktop: boolean;
+  mobile: boolean
+};
 
 export interface SchemaFormComponent {
   component: string | object;
@@ -96,10 +114,7 @@ export interface SchemaFormComponent {
   layout: boolean;
   platform: Platform;
   type: string;
-  wrap?: boolean | {
-    desktop: boolean;
-    mobile: boolean
-  }
+  wrap?: WrapType;
 }
 
 
