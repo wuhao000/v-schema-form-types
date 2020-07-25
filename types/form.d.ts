@@ -96,6 +96,10 @@ export interface SchemaFormComponent {
   layout: boolean;
   platform: Platform;
   type: string;
+  wrap?: boolean | {
+    desktop: boolean;
+    mobile: boolean
+  }
 }
 
 
