@@ -39,11 +39,11 @@ export interface SchemaForm {
     component: string | object,
     platforms: Platform | Platform[],
     types: string | string[],
-    forArray: boolean,
-    getProps: (definition: IField, platform: Platform) => object,
     forDisplay: boolean,
-    layout: boolean,
-    wrap: WrapType
+    forArray?: boolean,
+    getProps?: (definition: IField, platform: Platform) => object,
+    layout?: boolean,
+    wrap?: WrapType
   }) => void;
   registerResponsiveComponent: (component: string | object,
                                 types: string | string[],
@@ -94,7 +94,7 @@ export interface EffectsHandlers {
 
   enable(): void;
 
-  replaceLastPath(path: string): EffectsHandlers;
+  replaceLastPath(...path: string[]): EffectsHandlers;
 
   takePath(number: number): EffectsHandlers;
 }
